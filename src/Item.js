@@ -1,18 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { LoremIpsum } from "react-lorem-ipsum";
 import { Link } from "react-router-dom";
 import { items } from "./data";
 
 export function Item({ id }) {
-  const { category, title } = items.find((item) => item.id === id);
+  const { category, title, content } = items.find((item) => item.id === id);
 
   return (
     <>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0, transition: { duration: 0.15 } }}
+        exit={{ opacity: 0, transition: { duration: 0.25 } }}
         transition={{ duration: 0.2, delay: 0.15 }}
         style={{ pointerEvents: "auto" }}
         className="overlay"
@@ -35,11 +34,7 @@ export function Item({ id }) {
             <h2>{title}</h2>
           </motion.div>
           <motion.div className="content-container" animate>
-            <LoremIpsum
-              p={6}
-              avgWordsPerSentence={6}
-              avgSentencesPerParagraph={4}
-            />
+            <p>{content}</p>
           </motion.div>
         </motion.div>
       </div>
